@@ -9,7 +9,7 @@ import (
 )
 
 func TestContainer_Run(t *testing.T) {
-	d, err := New("alpine", "echo Hello World")
+	d, err := New("golang", "echo Hello World")
 	assert.Equal(t, err, nil)
 	err = d.Run(context.Background())
 	assert.Equal(t, err, nil)
@@ -19,7 +19,7 @@ func TestContainer_Run(t *testing.T) {
 }
 
 func TestContainer_Logs(t *testing.T) {
-	d, err := New("alpine", "echo Hello World")
+	d, err := New("golang", "echo Hello World")
 	assert.Equal(t, err, nil)
 	err = d.Run(context.Background())
 	assert.Equal(t, err, nil)
