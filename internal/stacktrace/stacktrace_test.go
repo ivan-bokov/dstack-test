@@ -46,13 +46,13 @@ func TestError(t *testing.T) {
 	err2 := Wrapf("test2: %w", err1)
 	wrapErr := Wrap(err)
 
-	errText := "[stacktrace_test.go:43 stacktrace.TestError] test"
+	errText := "[stacktrace_test.go:44 stacktrace.TestError] test"
 	assert.Equal(t, errText, err.Error())
-	err1Text := "[stacktrace_test.go:44 stacktrace.TestError] test1: " + errText
+	err1Text := "[stacktrace_test.go:45 stacktrace.TestError] test1: " + errText
 	assert.Equal(t, err1Text, err1.Error())
-	err2Text := "[stacktrace_test.go:45 stacktrace.TestError] test2: " + err1Text
+	err2Text := "[stacktrace_test.go:46 stacktrace.TestError] test2: " + err1Text
 	assert.Equal(t, err2Text, err2.Error())
-	wrapErrText := "[stacktrace_test.go:46 stacktrace.TestError] " + errText
+	wrapErrText := "[stacktrace_test.go:47 stacktrace.TestError] " + errText
 	assert.Equal(t, wrapErrText, wrapErr.Error())
 
 	assert.NotEqual(t, err, unwrap(err1, 1))
