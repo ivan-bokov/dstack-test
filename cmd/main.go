@@ -24,7 +24,7 @@ func main() {
 	awsRegion := kingpin.Flag("aws-region", "").Required().String()
 
 	kingpin.Parse()
-	sigCh, cancel := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT)
+	sigCh, cancel := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT, os.Interrupt)
 
 	dock, err := docker.New(*dockerImage, *bashCommand)
 	if err != nil {
