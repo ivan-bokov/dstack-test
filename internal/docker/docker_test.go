@@ -2,6 +2,7 @@ package docker
 
 import (
 	"context"
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,6 +13,9 @@ func TestContainer_Run(t *testing.T) {
 	assert.Equal(t, err, nil)
 	err = d.Run(context.Background())
 	assert.Equal(t, err, nil)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func TestContainer_Logs(t *testing.T) {
