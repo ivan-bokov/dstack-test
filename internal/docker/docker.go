@@ -58,7 +58,11 @@ func (c *Container) Run(ctx context.Context) error {
 		Cmd:         []string{"sh", "-c", c.Shell},
 		Image:       c.Image,
 		ArgsEscaped: true,
-	}, nil, nil, nil, "")
+	}, &container.HostConfig{
+		Binds: []string{
+			"/var/run/docker.sock:/var/run/docker.sock",
+		},
+	}, nil, nil, "")
 	if err != nil {
 		return stacktrace.Wrap(err)
 	}
